@@ -14,24 +14,32 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Kith — Build With Us"/>
 <meta name="twitter:description" content="Decentralized. Borderless. Mutual Aid. The infrastructure for keeping each other alive."/>
+<link rel="icon" href="/favicon.ico" sizes="48x48"/>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="msapplication-TileColor" content="#1b2a4a"/>
+<meta name="theme-color" content="#1b2a4a"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --bg-deep: #0a0c10;
-  --bg: #10131a;
-  --bg-card: #161a24;
-  --bg-elevated: #1c2130;
-  --accent: #c8ff00;
-  --accent-dim: rgba(200,255,0,0.12);
-  --accent-glow: rgba(200,255,0,0.25);
-  --text: #c8cdd5;
-  --text-bright: #e8ecf2;
-  --text-muted: rgba(200,205,213,0.4);
-  --text-faint: rgba(200,205,213,0.2);
+  --bg-deep: #1b2a4a;
+  --bg: #1f3054;
+  --bg-card: #24365e;
+  --bg-elevated: #2a3d68;
+  --accent: #4CAF50;
+  --accent-dim: rgba(76,175,80,0.15);
+  --accent-glow: rgba(76,175,80,0.35);
+  --text: #c8d4e6;
+  --text-bright: #ffffff;
+  --text-muted: rgba(200,212,230,0.5);
+  --text-faint: rgba(200,212,230,0.25);
   --red: #ff4444;
-  --divider: rgba(200,205,213,0.08);
+  --divider: rgba(200,212,230,0.1);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,8 +68,8 @@ body {
   text-align: center;
   padding: 2rem;
   background:
-    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(200,255,0,0.03) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 40% at 70% 60%, rgba(200,255,0,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 35%, rgba(76,175,80,0.05) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 70% 60%, rgba(76,175,80,0.03) 0%, transparent 60%),
     var(--bg-deep);
   position: relative;
   overflow: hidden;
@@ -91,8 +99,8 @@ body {
   animation: glitch-in 0.6s ease both;
   position: relative;
 }
-.hero-logo .k { color: var(--text-bright); }
-.hero-logo .ith { color: var(--accent); }
+.hero-logo .get { color: var(--text-bright); }
+.hero-logo .kith { color: var(--accent); }
 
 .hero-tagline {
   font-family: 'Outfit', sans-serif;
@@ -159,17 +167,17 @@ body {
   font-size: clamp(0.85rem, 2vw, 1.1rem);
   letter-spacing: 3px;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 50px;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 0 30px var(--accent-glow);
+  box-shadow: 0 4px 20px var(--accent-glow);
   animation: fade-up 0.6s ease 0.5s both;
   text-transform: uppercase;
 }
 .hero-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 50px var(--accent-glow), 0 0 100px rgba(200,255,0,0.1);
+  box-shadow: 0 6px 30px var(--accent-glow), 0 0 60px rgba(76,175,80,0.15);
 }
 
 .scroll-hint {
@@ -312,7 +320,6 @@ body {
   margin: 0 auto;
   overflow-y: auto;
   padding: 3rem 2.5rem 4rem;
-  overscroll-behavior: contain;
 }
 .manifesto-container::-webkit-scrollbar { width: 3px; }
 .manifesto-container::-webkit-scrollbar-track { background: transparent; }
@@ -381,6 +388,205 @@ body {
   animation: none;
 }
 
+/* ── CRYPTO TRANSPARENCY ── */
+.crypto-section {
+  padding: 5rem 2rem;
+  background: var(--bg-deep);
+  border-top: 1px solid var(--divider);
+}
+
+.crypto-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.crypto-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.crypto-header .label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.crypto-header h2 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--text-bright);
+  letter-spacing: -1px;
+  margin-bottom: 1rem;
+}
+.crypto-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.wallet-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.wallet-card {
+  background: var(--bg-card);
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.wallet-card .chain-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.wallet-card .chain-label svg {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+.wallet-card .wallet-address {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text);
+  word-break: break-all;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  background: var(--bg-deep);
+  padding: 0.6rem 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--text-faint);
+}
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: none;
+  border: 1px solid var(--text-faint);
+  border-radius: 4px;
+  color: var(--text-muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.copy-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.copy-btn.copied {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.copy-btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+.transparency-dashboard {
+  background: var(--bg-card);
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  padding: 2rem;
+}
+.transparency-dashboard h3 {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-bright);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.dash-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--divider);
+}
+.dash-stat .stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+.dash-stat .stat-value {
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.recent-contributions h4 {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+.contrib-list {
+  list-style: none;
+}
+.contrib-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--divider);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+}
+.contrib-list li:last-child {
+  border-bottom: none;
+}
+.contrib-addr {
+  color: var(--text-muted);
+}
+.contrib-amount {
+  color: var(--accent);
+  font-weight: 700;
+}
+.contrib-date {
+  color: var(--text-faint);
+  font-size: 0.65rem;
+}
+
+.verify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: opacity 0.2s;
+}
+.verify-link:hover {
+  opacity: 0.8;
+}
+
 /* ── FOOTER ── */
 footer {
   padding: 2.5rem 2rem;
@@ -395,8 +601,8 @@ footer .foot-logo {
   margin-bottom: 0.5rem;
   letter-spacing: -1px;
 }
-footer .foot-logo .k { color: var(--text); }
-footer .foot-logo .ith { color: var(--accent); }
+footer .foot-logo .get { color: var(--text); }
+footer .foot-logo .kith { color: var(--accent); }
 footer p {
   font-size: 0.7rem;
   color: var(--text-faint);
@@ -432,6 +638,8 @@ footer p {
   position: relative;
   box-shadow: 0 40px 100px rgba(0,0,0,0.6);
   animation: slide-up 0.35s ease;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 @keyframes slide-up {
   from { opacity: 0; transform: translateY(16px); }
@@ -511,7 +719,7 @@ footer p {
 .form-field select {
   cursor: pointer;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23c8ff00' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%234CAF50' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.9rem center;
   padding-right: 2.5rem;
@@ -532,14 +740,19 @@ footer p {
   letter-spacing: 2px;
   text-transform: uppercase;
   border: none;
-  border-radius: 4px;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.2s;
   margin-top: 0.5rem;
 }
 .modal-submit:hover {
-  box-shadow: 0 0 30px var(--accent-glow);
+  box-shadow: 0 4px 20px var(--accent-glow);
   transform: translateY(-1px);
+}
+.modal-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .modal-note {
@@ -550,6 +763,22 @@ footer p {
   line-height: 1.6;
   font-family: 'Space Mono', monospace;
   letter-spacing: 0.5px;
+}
+
+.modal-error {
+  display: none;
+  background: rgba(255,68,68,0.1);
+  border: 1px solid var(--red);
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 1rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--red);
+  letter-spacing: 0.5px;
+}
+.modal-error.show {
+  display: block;
 }
 
 .modal-success {
@@ -587,6 +816,10 @@ footer p {
   .manifesto-container { padding: 2.5rem 1.5rem 4rem; height: 60vh; }
   .modal-box { padding: 2rem 1.5rem; }
   .hero-checks li { letter-spacing: 1.5px; }
+  .wallet-cards { grid-template-columns: 1fr; }
+  .dash-stats { flex-direction: column; gap: 1rem; }
+  .contrib-list li { flex-wrap: wrap; gap: 0.25rem; }
+  .crypto-section { padding: 3.5rem 1.5rem; }
 }
 </style>
 </head>
@@ -595,7 +828,7 @@ footer p {
 <!-- ════════════ HERO ════════════ -->
 <section class="hero">
   <div class="hero-logo">
-    <span class="k">k</span><span class="ith">ith</span>
+    <span class="get">get</span><span class="kith">Kith</span>
   </div>
   <div class="hero-tagline">Build with us.</div>
   <div class="hero-divider"></div>
@@ -747,9 +980,84 @@ footer p {
   <button class="hero-cta" onclick="openModal()">Apply Now</button>
 </section>
 
+<!-- ════════════ CRYPTO TRANSPARENCY ════════════ -->
+<section class="crypto-section">
+  <div class="crypto-inner">
+    <div class="crypto-header">
+      <span class="label">// On-Chain Receipts</span>
+      <h2>Fund the Build</h2>
+      <p>Every contribution is tracked on-chain. No black boxes. No mystery spending. This is mutual aid with public receipts -- the proof of concept for transparent collective infrastructure.</p>
+    </div>
+
+    <div class="wallet-cards">
+      <div class="wallet-card">
+        <div class="chain-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Ethereum (ETH)
+        </div>
+        <div class="wallet-address" id="eth-address">YOUR_ETH_WALLET</div>
+        <button class="copy-btn" onclick="copyAddress('eth-address', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+      <div class="wallet-card">
+        <div class="chain-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M8 10h8M8 14h8"/></svg>
+          Bitcoin (BTC)
+        </div>
+        <div class="wallet-address" id="btc-address">YOUR_BTC_WALLET</div>
+        <button class="copy-btn" onclick="copyAddress('btc-address', this)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy
+        </button>
+      </div>
+    </div>
+
+    <div class="transparency-dashboard">
+      <h3>Transparency Dashboard</h3>
+      <div class="dash-stats">
+        <div class="dash-stat">
+          <div class="stat-label">Total Raised</div>
+          <div class="stat-value">--</div>
+        </div>
+        <div class="dash-stat">
+          <div class="stat-label">Contributors</div>
+          <div class="stat-value">--</div>
+        </div>
+        <div class="dash-stat">
+          <div class="stat-label">Last Activity</div>
+          <div class="stat-value">--</div>
+        </div>
+      </div>
+      <div class="recent-contributions">
+        <h4>Recent Contributions</h4>
+        <ul class="contrib-list">
+          <li>
+            <span class="contrib-addr">0x...awaiting</span>
+            <span class="contrib-amount">--</span>
+            <span class="contrib-date">--</span>
+          </li>
+          <li>
+            <span class="contrib-addr">0x...awaiting</span>
+            <span class="contrib-amount">--</span>
+            <span class="contrib-date">--</span>
+          </li>
+          <li>
+            <span class="contrib-addr">0x...awaiting</span>
+            <span class="contrib-amount">--</span>
+            <span class="contrib-date">--</span>
+          </li>
+        </ul>
+      </div>
+      <a href="#" class="verify-link">Verify on-chain &rarr;</a>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════ FOOTER ════════════ -->
 <footer>
-  <div class="foot-logo"><span class="k">k</span><span class="ith">ith</span></div>
+  <div class="foot-logo"><span class="get">get</span><span class="kith">Kith</span>.build</div>
   <p>Decentralized. Borderless. Mutual Aid.</p>
 </footer>
 
@@ -760,7 +1068,9 @@ footer p {
 
     <div id="formView">
       <h3>Apply to build</h3>
-      <p class="modal-sub">We're looking for systems thinkers, engineers, and designers who build with purpose. Not résumés. Not pitches. What have you shipped?</p>
+      <p class="modal-sub">We're looking for systems thinkers, engineers, and designers who build with purpose. Not r&eacute;sum&eacute;s. Not pitches. What have you shipped?</p>
+
+      <div class="modal-error" id="formError"></div>
 
       <div class="form-field">
         <label>Name or Handle</label>
@@ -788,11 +1098,32 @@ footer p {
       </div>
 
       <div class="form-field">
+        <label>GitHub / Portfolio Link</label>
+        <input type="url" placeholder="https://github.com/you or portfolio URL" id="f-portfolio"/>
+      </div>
+
+      <div class="form-field">
+        <label>Timezone / Region</label>
+        <input type="text" placeholder="e.g. UTC-5 / Eastern US, GMT+1 / Berlin" id="f-timezone"/>
+      </div>
+
+      <div class="form-field">
+        <label>Availability</label>
+        <select id="f-availability">
+          <option value="" disabled selected>Select your availability</option>
+          <option>Full-time</option>
+          <option>Part-time</option>
+          <option>Volunteer</option>
+          <option>Advisory</option>
+        </select>
+      </div>
+
+      <div class="form-field">
         <label>What have you shipped? What would you break first?</label>
         <textarea placeholder="Be specific. We care about what you've broken and how you fixed it." id="f-message"></textarea>
       </div>
 
-      <button class="modal-submit" onclick="submitForm()">Send Signal</button>
+      <button class="modal-submit" id="submitBtn" onclick="submitForm()">Send Signal</button>
       <p class="modal-note">No mailing lists. No spam. This goes to the project lead. Directly.</p>
     </div>
 
@@ -806,7 +1137,24 @@ footer p {
   </div>
 </div>
 
+<!-- Supabase JS Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
 <script>
+/* ── Supabase Config ── */
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+let supabaseClient = null;
+try {
+  if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
+    supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
+} catch (e) {
+  console.warn('Supabase client not initialized:', e);
+}
+
+/* ── Modal ── */
 function openModal() {
   document.getElementById('applyModal').classList.add('active');
   document.body.style.overflow = 'hidden';
@@ -822,18 +1170,96 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
 
-function submitForm() {
+/* ── Form Submission ── */
+async function submitForm() {
+  const errorEl = document.getElementById('formError');
+  const submitBtn = document.getElementById('submitBtn');
+  errorEl.classList.remove('show');
+  errorEl.textContent = '';
+
   const name = document.getElementById('f-name').value.trim();
   const contact = document.getElementById('f-contact').value.trim();
   const role = document.getElementById('f-role').value;
+  const portfolio = document.getElementById('f-portfolio').value.trim();
+  const timezone = document.getElementById('f-timezone').value.trim();
+  const availability = document.getElementById('f-availability').value;
   const message = document.getElementById('f-message').value.trim();
+
   if (!name || !contact || !role || !message) {
-    alert('Fill in all fields. We need to know who you are and what you build.');
+    errorEl.textContent = 'Fill in all required fields. We need to know who you are and what you build.';
+    errorEl.classList.add('show');
     return;
   }
-  console.log('Kith Application:', { name, contact, role, message });
-  document.getElementById('formView').style.display = 'none';
-  document.getElementById('successView').classList.add('show');
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  const payload = {
+    name,
+    contact,
+    role,
+    portfolio: portfolio || null,
+    timezone: timezone || null,
+    availability: availability || null,
+    message
+  };
+
+  if (supabaseClient) {
+    try {
+      const { error } = await supabaseClient
+        .from('applications')
+        .insert([payload]);
+
+      if (error) {
+        throw error;
+      }
+
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('successView').classList.add('show');
+    } catch (err) {
+      console.error('Submission error:', err);
+      errorEl.textContent = 'Something went wrong. Try again, or reach out directly.';
+      errorEl.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Signal';
+    }
+  } else {
+    /* Fallback when Supabase is not configured */
+    console.log('Kith Application:', payload);
+    document.getElementById('formView').style.display = 'none';
+    document.getElementById('successView').classList.add('show');
+  }
+}
+
+/* ── Copy to Clipboard ── */
+function copyAddress(elementId, btn) {
+  const text = document.getElementById(elementId).textContent;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    var originalText = btn.innerHTML;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+    setTimeout(function() {
+      btn.innerHTML = originalText;
+      btn.classList.remove('copied');
+    }, 2000);
+  }).catch(function() {
+    /* Fallback for older browsers */
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.classList.add('copied');
+    var originalText = btn.innerHTML;
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px"><polyline points="20 6 9 17 4 12"/></svg> Copied';
+    setTimeout(function() {
+      btn.innerHTML = originalText;
+      btn.classList.remove('copied');
+    }, 2000);
+  });
 }
 </script>
 
