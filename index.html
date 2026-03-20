@@ -809,6 +809,77 @@ footer p {
   font-size: 0.85rem;
 }
 
+/* ── PATH SELECTOR ── */
+.path-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.path-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1.1rem 1.25rem;
+  background: var(--bg-deep);
+  border: 1px solid var(--text-faint);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.path-btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+}
+.path-btn-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background: var(--accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.path-btn-icon svg {
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+.path-btn-label {
+  display: block;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--text-bright);
+  letter-spacing: -0.3px;
+}
+.path-btn-desc {
+  display: block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+.path-back {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 1rem;
+  transition: color 0.2s;
+}
+.path-back:hover {
+  color: var(--accent);
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {
   .hero { padding: 2rem 1.5rem; }
@@ -846,7 +917,7 @@ footer p {
       MUTUAL AID.
     </li>
   </ul>
-  <button class="hero-cta" onclick="openModal()">Apply Now</button>
+  <button class="hero-cta" onclick="openModal()">Get Involved</button>
   <div class="scroll-hint">
     Read the manifesto
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -977,7 +1048,7 @@ footer p {
 <section class="bottom-cta">
   <h2>Ready to build?</h2>
   <p class="sub">No hype. No influencer energy. Just builders.</p>
-  <button class="hero-cta" onclick="openModal()">Apply Now</button>
+  <button class="hero-cta" onclick="openModal()">Get Involved</button>
 </section>
 
 <!-- ════════════ CRYPTO TRANSPARENCY ════════════ -->
@@ -1061,16 +1132,36 @@ footer p {
   <p>Decentralized. Borderless. Mutual Aid.</p>
 </footer>
 
-<!-- ════════════ APPLY MODAL ════════════ -->
+<!-- ════════════ GET INVOLVED MODAL ════════════ -->
 <div class="modal-overlay" id="applyModal">
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">&times;</button>
 
-    <div id="formView">
+    <!-- ── STEP 1: Path Selector ── -->
+    <div id="pathSelector">
+      <h3>Get Involved</h3>
+      <p class="modal-sub">Two ways in. One mission.</p>
+      <div class="path-buttons">
+        <button class="path-btn" onclick="selectPath('build')">
+          <span class="path-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+          <span class="path-btn-label">I want to build</span>
+          <span class="path-btn-desc">Engineers, designers, strategists</span>
+        </button>
+        <button class="path-btn" onclick="selectPath('join')">
+          <span class="path-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="path-btn-label">I want to join</span>
+          <span class="path-btn-desc">Early adopters, believers, future members</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── STEP 2A: Builder Application Form ── -->
+    <div id="builderForm" style="display:none">
+      <button class="path-back" onclick="goBack()">&larr; Back</button>
       <h3>Apply to build</h3>
       <p class="modal-sub">We're looking for systems thinkers, engineers, and designers who build with purpose. Not r&eacute;sum&eacute;s. Not pitches. What have you shipped?</p>
 
-      <div class="modal-error" id="formError"></div>
+      <div class="modal-error" id="builderError"></div>
 
       <div class="form-field">
         <label>Name or Handle</label>
@@ -1086,9 +1177,9 @@ footer p {
         <label>What do you build?</label>
         <select id="f-role">
           <option value="" disabled selected>Select your primary skill</option>
-          <option>Smart Contract / Blockchain Engineering</option>
           <option>Frontend / UX Engineering</option>
           <option>Backend / Infrastructure</option>
+          <option>Smart Contract / Blockchain Engineering</option>
           <option>Security / Adversarial Testing</option>
           <option>Product Design / UX Research</option>
           <option>Community / Governance Design</option>
@@ -1123,10 +1214,43 @@ footer p {
         <textarea placeholder="Be specific. We care about what you've broken and how you fixed it." id="f-message"></textarea>
       </div>
 
-      <button class="modal-submit" id="submitBtn" onclick="submitForm()">Send Signal</button>
+      <button class="modal-submit" id="builderSubmitBtn" onclick="submitBuilderForm()">Send Signal</button>
       <p class="modal-note">No mailing lists. No spam. This goes to the project lead. Directly.</p>
     </div>
 
+    <!-- ── STEP 2B: Early Adopter Signup Form ── -->
+    <div id="adopterForm" style="display:none">
+      <button class="path-back" onclick="goBack()">&larr; Back</button>
+      <h3>Join the wave</h3>
+      <p class="modal-sub">You don't need to code. You just need to care. Be among the first to know when Kith goes live.</p>
+
+      <div class="modal-error" id="adopterError"></div>
+
+      <div class="form-field">
+        <label>Name or Handle</label>
+        <input type="text" placeholder="How should we address you?" id="f-adopter-name"/>
+      </div>
+
+      <div class="form-field">
+        <label>Contact (email, Signal, etc.)</label>
+        <input type="text" placeholder="How do we reach you?" id="f-adopter-contact"/>
+      </div>
+
+      <div class="form-field">
+        <label>What draws you to Kith?</label>
+        <textarea placeholder="What about mutual aid, decentralized safety nets, or this mission resonates with you?" id="f-adopter-why"></textarea>
+      </div>
+
+      <div class="form-field">
+        <label>How did you hear about us?</label>
+        <input type="text" placeholder="Twitter, a friend, a forum, the void..." id="f-adopter-source"/>
+      </div>
+
+      <button class="modal-submit" id="adopterSubmitBtn" onclick="submitAdopterForm()">Count me in</button>
+      <p class="modal-note">No mailing lists. No spam. We'll reach out when it's time.</p>
+    </div>
+
+    <!-- ── Success View ── -->
     <div class="modal-success" id="successView">
       <div class="check-circle">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1154,15 +1278,45 @@ try {
   console.warn('Supabase client not initialized:', e);
 }
 
-/* ── Modal ── */
+/* ── Modal & Path Navigation ── */
+let currentPath = null;
+
 function openModal() {
+  resetModal();
   document.getElementById('applyModal').classList.add('active');
   document.body.style.overflow = 'hidden';
 }
+
 function closeModal() {
   document.getElementById('applyModal').classList.remove('active');
   document.body.style.overflow = '';
 }
+
+function resetModal() {
+  currentPath = null;
+  document.getElementById('pathSelector').style.display = '';
+  document.getElementById('builderForm').style.display = 'none';
+  document.getElementById('adopterForm').style.display = 'none';
+  document.getElementById('successView').classList.remove('show');
+}
+
+function selectPath(path) {
+  currentPath = path;
+  document.getElementById('pathSelector').style.display = 'none';
+  if (path === 'build') {
+    document.getElementById('builderForm').style.display = '';
+  } else {
+    document.getElementById('adopterForm').style.display = '';
+  }
+}
+
+function goBack() {
+  document.getElementById('builderForm').style.display = 'none';
+  document.getElementById('adopterForm').style.display = 'none';
+  document.getElementById('pathSelector').style.display = '';
+  currentPath = null;
+}
+
 document.getElementById('applyModal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
@@ -1170,20 +1324,50 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });
 
-/* ── Form Submission ── */
-async function submitForm() {
-  const errorEl = document.getElementById('formError');
-  const submitBtn = document.getElementById('submitBtn');
+/* ── Shared submission helper ── */
+async function submitToSupabase(table, payload, errorEl, submitBtn, originalLabel) {
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+
+  if (supabaseClient) {
+    try {
+      var result = await supabaseClient.from(table).insert([payload]);
+      if (result.error) throw result.error;
+      showSuccess();
+    } catch (err) {
+      console.error('Submission error:', err);
+      errorEl.textContent = 'Something went wrong. Try again, or reach out directly.';
+      errorEl.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalLabel;
+    }
+  } else {
+    console.log('Kith ' + table + ':', payload);
+    showSuccess();
+  }
+}
+
+function showSuccess() {
+  document.getElementById('builderForm').style.display = 'none';
+  document.getElementById('adopterForm').style.display = 'none';
+  document.getElementById('pathSelector').style.display = 'none';
+  document.getElementById('successView').classList.add('show');
+}
+
+/* ── Builder Application ── */
+async function submitBuilderForm() {
+  var errorEl = document.getElementById('builderError');
+  var submitBtn = document.getElementById('builderSubmitBtn');
   errorEl.classList.remove('show');
   errorEl.textContent = '';
 
-  const name = document.getElementById('f-name').value.trim();
-  const contact = document.getElementById('f-contact').value.trim();
-  const role = document.getElementById('f-role').value;
-  const portfolio = document.getElementById('f-portfolio').value.trim();
-  const timezone = document.getElementById('f-timezone').value.trim();
-  const availability = document.getElementById('f-availability').value;
-  const message = document.getElementById('f-message').value.trim();
+  var name = document.getElementById('f-name').value.trim();
+  var contact = document.getElementById('f-contact').value.trim();
+  var role = document.getElementById('f-role').value;
+  var portfolio = document.getElementById('f-portfolio').value.trim();
+  var timezone = document.getElementById('f-timezone').value.trim();
+  var availability = document.getElementById('f-availability').value;
+  var message = document.getElementById('f-message').value.trim();
 
   if (!name || !contact || !role || !message) {
     errorEl.textContent = 'Fill in all required fields. We need to know who you are and what you build.';
@@ -1191,49 +1375,46 @@ async function submitForm() {
     return;
   }
 
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
-
-  const payload = {
-    name,
-    contact,
-    role,
+  await submitToSupabase('builder_applications', {
+    name: name,
+    contact: contact,
+    role: role,
     portfolio: portfolio || null,
     timezone: timezone || null,
     availability: availability || null,
-    message
-  };
+    message: message
+  }, errorEl, submitBtn, 'Send Signal');
+}
 
-  if (supabaseClient) {
-    try {
-      const { error } = await supabaseClient
-        .from('applications')
-        .insert([payload]);
+/* ── Early Adopter Signup ── */
+async function submitAdopterForm() {
+  var errorEl = document.getElementById('adopterError');
+  var submitBtn = document.getElementById('adopterSubmitBtn');
+  errorEl.classList.remove('show');
+  errorEl.textContent = '';
 
-      if (error) {
-        throw error;
-      }
+  var name = document.getElementById('f-adopter-name').value.trim();
+  var contact = document.getElementById('f-adopter-contact').value.trim();
+  var why = document.getElementById('f-adopter-why').value.trim();
+  var source = document.getElementById('f-adopter-source').value.trim();
 
-      document.getElementById('formView').style.display = 'none';
-      document.getElementById('successView').classList.add('show');
-    } catch (err) {
-      console.error('Submission error:', err);
-      errorEl.textContent = 'Something went wrong. Try again, or reach out directly.';
-      errorEl.classList.add('show');
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Signal';
-    }
-  } else {
-    /* Fallback when Supabase is not configured */
-    console.log('Kith Application:', payload);
-    document.getElementById('formView').style.display = 'none';
-    document.getElementById('successView').classList.add('show');
+  if (!name || !contact) {
+    errorEl.textContent = 'We need at least your name and a way to reach you.';
+    errorEl.classList.add('show');
+    return;
   }
+
+  await submitToSupabase('early_adopters', {
+    name: name,
+    contact: contact,
+    why_kith: why || null,
+    heard_from: source || null
+  }, errorEl, submitBtn, 'Count me in');
 }
 
 /* ── Copy to Clipboard ── */
 function copyAddress(elementId, btn) {
-  const text = document.getElementById(elementId).textContent;
+  var text = document.getElementById(elementId).textContent;
   navigator.clipboard.writeText(text).then(function() {
     btn.classList.add('copied');
     var originalText = btn.innerHTML;
@@ -1243,7 +1424,6 @@ function copyAddress(elementId, btn) {
       btn.classList.remove('copied');
     }, 2000);
   }).catch(function() {
-    /* Fallback for older browsers */
     var ta = document.createElement('textarea');
     ta.value = text;
     ta.style.position = 'fixed';
