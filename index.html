@@ -98,7 +98,7 @@
 <script>
         const SUPABASE_URL = 'https://jyscoohnmpkzdainefko.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5c2Nvb2hubXBremRhaW5lZmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5Njg4NzEsImV4cCI6MjA4OTU0NDg3MX0.k2FpCM0iznOa49yaM65MyfYhgwWQTmurZ9ZWouCVqwY';
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     </script>
 <script defer="" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
@@ -469,7 +469,7 @@
                 this.isSubmitting = true;
                 this.errorMsg = '';
                 try {
-                    const { error } = await supabase
+                    const { error } = await db
                         .from('builder_applications')
                         .insert({
                             name: this.builder.name,
@@ -493,7 +493,7 @@
                 this.isSubmitting = true;
                 this.errorMsg = '';
                 try {
-                    const { error } = await supabase
+                    const { error } = await db
                         .from('early_adopters')
                         .insert({
                             name: this.adopter.name,
