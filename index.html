@@ -516,7 +516,7 @@
                             name: this.builder.name,
                             contact: this.builder.contact,
                             role: this.builder.role,
-                            shipped: this.builder.shipped,
+                            message: this.builder.shipped,
                             portfolio: this.builder.portfolio || null,
                             timezone: this.builder.timezone || null,
                             availability: this.builder.availability || null
@@ -539,8 +539,8 @@
                         .insert({
                             name: this.adopter.name,
                             contact: this.adopter.contact,
-                            why: this.adopter.why || null,
-                            source: this.adopter.source || null
+                            why_kith: this.adopter.why || null,
+                            heard_from: this.adopter.source || null
                         });
                     if (error) throw error;
                     this.submitted = true;
