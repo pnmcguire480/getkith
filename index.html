@@ -4,28 +4,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>getKith | Sovereign Brutalism</title>
-<meta name="description" content="Decentralized. Borderless. Disobedient. Build the safety net they won't."/>
-<link rel="canonical" href="https://getkith.build"/>
-<meta property="og:title" content="Kith — Build With Us"/>
-<meta property="og:description" content="Decentralized. Borderless. Mutual Aid. The infrastructure for keeping each other alive."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://getkith.build"/>
-<meta property="og:site_name" content="Kith"/>
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Kith — Build With Us"/>
-<meta name="twitter:description" content="Decentralized. Borderless. Mutual Aid. The infrastructure for keeping each other alive."/>
-<link rel="icon" href="/favicon.ico" sizes="48x48"/>
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"/>
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-<link rel="manifest" href="/site.webmanifest"/>
-<meta name="msapplication-TileColor" content="#021231"/>
-<meta name="theme-color" content="#021231"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script>
+<script id="tailwind-config">
         tailwind.config = {
           darkMode: "class",
           theme: {
@@ -112,21 +94,12 @@
         }
         [x-cloak] { display: none !important; }
     </style>
-<!-- Supabase JS Client -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-    /* ── Supabase Config ── */
-    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-    let supabaseClient = null;
-    try {
-      if (SUPABASE_URL !== 'YOUR_SUPABASE_URL' && SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY') {
-        supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-      }
-    } catch (e) {
-      console.warn('Supabase client not initialized:', e);
-    }
-</script>
+        const SUPABASE_URL = 'https://jyscoohnmpkzdainefko.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp5c2Nvb2hubXBremRhaW5lZmtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5Njg4NzEsImV4cCI6MjA4OTU0NDg3MX0.k2FpCM0iznOa49yaM65MyfYhgwWQTmurZ9ZWouCVqwY';
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
 <script defer="" src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary" x-data="kithApp()">
@@ -243,7 +216,7 @@
 <p>And let me say the quiet part... if this works, it will step on feet. Not because it's violent. Because it's disobedient. Middlemen don't like being made optional. They don't lose gracefully. They don't shrug and say, "Fair play."</p>
 <p>So I'm not putting the full blueprint on the internet. Not yet. Maybe not ever. I've learned enough about incentives to respect what that would invite.</p>
 <p>But I am putting the signal out. If you're the kind of person who reads this and feels your brain start mapping systems, not takes... if you can already see the attack vectors, the governance fights, the UX traps, the scaling nightmares, the regulatory theater, the low-tech access problem... good. That's the mind I want near this.</p>
-<p>Send me a message. Tell me what you've built. Tell me what you've shipped. Tell me what you've broken and how you fixed it. Tell me what you'd test first. Tell me what would go wrong, not in a vague way, but in a "here's the exploit" way.</p>
+<p>Send me a message. Tell me what you've built. Tell me what you've shipped. Tell me what you've broken and how you fixed it. Tell me what you'd test first. Tell me what would go wrong, not in a vage way, but in a "here's the exploit" way.</p>
 <p>No hype. No influencer energy. No "community manager" speak. Just builders.</p>
 <p>Because I don't think the world can handle another decade of polite collapse while we pretend the old systems still deserve to be trusted. I think we need tools that let people keep each other alive... in public... across borders... with receipts.</p>
 </div>
@@ -271,8 +244,8 @@
 <div class="font-label text-sm uppercase text-on-surface-variant">Ethereum (ETH)</div>
 <span class="material-symbols-outlined text-primary">account_balance_wallet</span>
 </div>
-<div class="font-label text-xl md:text-2xl mb-8 break-all text-on-surface" id="eth-address">0x78dc...77A1b2C3</div>
-<button onclick="copyAddress('eth-address', this)" class="w-full py-3 bg-surface-container-low border border-outline-variant hover:border-primary transition-colors flex items-center justify-center gap-2 font-label text-xs tracking-widest">
+<div class="font-label text-xl md:text-2xl mb-8 break-all text-on-surface">0x78dc...77A1b2C3</div>
+<button class="w-full py-3 bg-surface-container-low border border-outline-variant hover:border-primary transition-colors flex items-center justify-center gap-2 font-label text-xs tracking-widest">
 <span class="material-symbols-outlined text-sm">content_copy</span> COPY ADDRESS
                 </button>
 </div>
@@ -282,8 +255,8 @@
 <div class="font-label text-sm uppercase text-on-surface-variant">Bitcoin (BTC)</div>
 <span class="material-symbols-outlined text-primary">currency_bitcoin</span>
 </div>
-<div class="font-label text-xl md:text-2xl mb-8 break-all text-on-surface" id="btc-address">bc1q...78dc77kith</div>
-<button onclick="copyAddress('btc-address', this)" class="w-full py-3 bg-surface-container-low border border-outline-variant hover:border-primary transition-colors flex items-center justify-center gap-2 font-label text-xs tracking-widest">
+<div class="font-label text-xl md:text-2xl mb-8 break-all text-on-surface">bc1q...78dc77kith</div>
+<button class="w-full py-3 bg-surface-container-low border border-outline-variant hover:border-primary transition-colors flex items-center justify-center gap-2 font-label text-xs tracking-widest">
 <span class="material-symbols-outlined text-sm">content_copy</span> COPY ADDRESS
                 </button>
 </div>
@@ -354,11 +327,11 @@
 </section>
 </main>
 <!-- Get Involved Modal -->
-<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 modal-overlay" x-cloak x-show="modalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-end="opacity-0" x-transition:leave-start="opacity-100">
+<div class="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 modal-overlay" x-cloak="" x-show="modalOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-end="opacity-100" x-transition:enter-start="opacity-0" x-transition:leave="transition ease-in duration-200" x-transition:leave-end="opacity-0" x-transition:leave-start="opacity-100" @keydown.escape.window="modalOpen = false">
 <!-- Overlay Click Close -->
 <div @click="modalOpen = false" class="absolute inset-0"></div>
 <!-- Modal Content -->
-<div @click.stop class="relative w-full max-w-2xl bg-surface-container-low border border-outline-variant/30 rounded-xl brutalist-shadow overflow-hidden flex flex-col max-h-[90vh]" x-show="modalOpen" x-transition:enter="transition ease-out duration-300 delay-100" x-transition:enter-end="scale-100 translate-y-0" x-transition:enter-start="scale-95 translate-y-4">
+<div @click.stop="" class="relative w-full max-w-2xl bg-surface-container-low border border-outline-variant/30 rounded-xl brutalist-shadow overflow-hidden flex flex-col max-h-[90vh]" x-show="modalOpen" x-transition:enter="transition ease-out duration-300 delay-100" x-transition:enter-end="scale-100 translate-y-0" x-transition:enter-start="scale-95 translate-y-4">
 <!-- Modal Header -->
 <div class="flex items-center justify-between p-6 border-b border-outline-variant/10">
 <div class="flex items-center gap-4">
@@ -375,6 +348,8 @@
 </button>
 </div>
 <div class="overflow-y-auto p-6 md:p-8">
+<!-- Error Message -->
+<div x-show="errorMsg" x-text="errorMsg" class="mb-4 p-3 bg-error-container/20 border border-error/30 text-error rounded text-sm"></div>
 <!-- Step 1: Selector -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6" x-show="modalStep === 'selector' && !submitted">
 <button @click="modalStep = 'build'" class="flex flex-col text-left p-6 border border-outline-variant/20 hover:border-primary/50 hover:bg-primary/5 transition-all rounded-lg group">
@@ -390,20 +365,19 @@
 </div>
 <!-- Step 2: Build Form -->
 <form @submit.prevent="submitBuilder()" class="space-y-6" x-show="modalStep === 'build' && !submitted">
-<div class="text-error text-sm font-label" x-show="errorMsg" x-text="errorMsg"></div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div class="space-y-2">
-<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Name</label>
-<input id="f-name" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" required type="text"/>
+<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Name *</label>
+<input x-model="builder.name" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" required="" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Contact (Email/TG)</label>
-<input id="f-contact" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" required type="text"/>
+<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Contact (Email/TG) *</label>
+<input x-model="builder.contact" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" required="" type="text"/>
 </div>
 </div>
 <div class="space-y-2">
-<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Primary Role</label>
-<select id="f-role" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all">
+<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Primary Role *</label>
+<select x-model="builder.role" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all">
 <option>Software Engineer (Backend/Protocol)</option>
 <option>Frontend Engineer / UI Developer</option>
 <option>Product Designer (UX/UI)</option>
@@ -413,24 +387,24 @@
 </select>
 </div>
 <div class="space-y-2">
-<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">What have you shipped?</label>
-<textarea id="f-message" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" placeholder="Highlight a project, a protocol, or a piece of infrastructure you're proud of." required rows="3"></textarea>
+<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">What have you shipped? *</label>
+<textarea x-model="builder.shipped" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" placeholder="Highlight a project, a protocol, or a piece of infrastructure you're proud of." required="" rows="3"></textarea>
 </div>
 <div class="space-y-2">
 <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Portfolio / GitHub</label>
-<input id="f-portfolio" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" type="url"/>
+<input x-model="builder.portfolio" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" type="url"/>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div class="space-y-2">
 <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Timezone</label>
-<input id="f-timezone" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" placeholder="UTC-5" type="text"/>
+<input x-model="builder.timezone" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" placeholder="UTC-5" type="text"/>
 </div>
 <div class="space-y-2">
 <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Availability</label>
-<input id="f-availability" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" placeholder="5-10 hrs/week" type="text"/>
+<input x-model="builder.availability" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" placeholder="5-10 hrs/week" type="text"/>
 </div>
 </div>
-<button :disabled="isSubmitting" class="w-full bg-primary text-on-primary font-headline font-bold py-4 rounded transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2" type="submit">
+<button :disabled="isSubmitting || submitted" class="w-full bg-primary text-on-primary font-headline font-bold py-4 rounded transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2" type="submit">
 <span x-show="!isSubmitting">SEND SIGNAL</span>
 <span class="flex items-center gap-2" x-show="isSubmitting">
 <svg class="animate-spin h-5 w-5 text-on-primary" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -443,26 +417,25 @@
 </form>
 <!-- Step 2: Join Form -->
 <form @submit.prevent="submitAdopter()" class="space-y-6" x-show="modalStep === 'join' && !submitted">
-<div class="text-error text-sm font-label" x-show="errorMsg" x-text="errorMsg"></div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div class="space-y-2">
-<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Name</label>
-<input id="f-adopter-name" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" required type="text"/>
+<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Name *</label>
+<input x-model="adopter.name" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" required="" type="text"/>
 </div>
 <div class="space-y-2">
-<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Contact (Email/TG)</label>
-<input id="f-adopter-contact" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all" required type="text"/>
+<label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Contact (Email/TG) *</label>
+<input x-model="adopter.contact" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" required="" type="text"/>
 </div>
 </div>
 <div class="space-y-2">
 <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">What draws you to Kith?</label>
-<textarea id="f-adopter-why" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" rows="4"></textarea>
+<textarea x-model="adopter.why" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" rows="4"></textarea>
 </div>
 <div class="space-y-2">
 <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">How did you hear about us?</label>
-<input id="f-adopter-source" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" type="text"/>
+<input x-model="adopter.source" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" type="text"/>
 </div>
-<button :disabled="isSubmitting" class="w-full bg-primary text-on-primary font-headline font-bold py-4 rounded transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2" type="submit">
+<button :disabled="isSubmitting || submitted" class="w-full bg-primary text-on-primary font-headline font-bold py-4 rounded transition-all hover:scale-[1.02] active:scale-95 disabled:opacity-50 flex items-center justify-center gap-2" type="submit">
 <span x-show="!isSubmitting">COUNT ME IN</span>
 <span class="flex items-center gap-2" x-show="isSubmitting">
 <svg class="animate-spin h-5 w-5 text-on-primary" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -502,121 +475,83 @@
 </div>
 </div>
 </footer>
-
 <script>
-/* ── Alpine.js App Component ── */
-function kithApp() {
-  return {
-    modalOpen: false,
-    modalStep: 'selector',
-    isSubmitting: false,
-    submitted: false,
-    errorMsg: '',
-
-    openModal() {
-      this.modalOpen = true;
-      this.modalStep = 'selector';
-      this.isSubmitting = false;
-      this.submitted = false;
-      this.errorMsg = '';
-    },
-
-    async submitBuilder() {
-      this.errorMsg = '';
-      var name = document.getElementById('f-name').value.trim();
-      var contact = document.getElementById('f-contact').value.trim();
-      var role = document.getElementById('f-role').value;
-      var portfolio = document.getElementById('f-portfolio').value.trim();
-      var timezone = document.getElementById('f-timezone').value.trim();
-      var availability = document.getElementById('f-availability').value.trim();
-      var message = document.getElementById('f-message').value.trim();
-
-      if (!name || !contact || !message) {
-        this.errorMsg = 'Fill in all required fields.';
-        return;
-      }
-
-      this.isSubmitting = true;
-      var payload = {
-        name: name,
-        contact: contact,
-        role: role,
-        portfolio: portfolio || null,
-        timezone: timezone || null,
-        availability: availability || null,
-        message: message
-      };
-
-      if (supabaseClient) {
-        try {
-          var result = await supabaseClient.from('builder_applications').insert([payload]);
-          if (result.error) throw result.error;
-          this.isSubmitting = false;
-          this.submitted = true;
-        } catch (err) {
-          console.error('Submission error:', err);
-          this.errorMsg = 'Something went wrong. Try again, or reach out directly.';
-          this.isSubmitting = false;
+    function kithApp() {
+        return {
+            modalOpen: false,
+            modalStep: 'selector',
+            isSubmitting: false,
+            submitted: false,
+            errorMsg: '',
+            builder: {
+                name: '',
+                contact: '',
+                role: 'Software Engineer (Backend/Protocol)',
+                shipped: '',
+                portfolio: '',
+                timezone: '',
+                availability: ''
+            },
+            adopter: {
+                name: '',
+                contact: '',
+                why: '',
+                source: ''
+            },
+            openModal() {
+                this.modalOpen = true;
+                this.modalStep = 'selector';
+                this.submitted = false;
+                this.errorMsg = '';
+                this.builder = { name: '', contact: '', role: 'Software Engineer (Backend/Protocol)', shipped: '', portfolio: '', timezone: '', availability: '' };
+                this.adopter = { name: '', contact: '', why: '', source: '' };
+            },
+            async submitBuilder() {
+                this.isSubmitting = true;
+                this.errorMsg = '';
+                try {
+                    const { error } = await supabase
+                        .from('builder_applications')
+                        .insert({
+                            name: this.builder.name,
+                            contact: this.builder.contact,
+                            role: this.builder.role,
+                            shipped: this.builder.shipped,
+                            portfolio: this.builder.portfolio || null,
+                            timezone: this.builder.timezone || null,
+                            availability: this.builder.availability || null
+                        });
+                    if (error) throw error;
+                    this.submitted = true;
+                } catch (err) {
+                    this.errorMsg = 'Transmission failed. Please try again.';
+                    console.error('Builder submission error:', err);
+                } finally {
+                    this.isSubmitting = false;
+                }
+            },
+            async submitAdopter() {
+                this.isSubmitting = true;
+                this.errorMsg = '';
+                try {
+                    const { error } = await supabase
+                        .from('early_adopters')
+                        .insert({
+                            name: this.adopter.name,
+                            contact: this.adopter.contact,
+                            why: this.adopter.why || null,
+                            source: this.adopter.source || null
+                        });
+                    if (error) throw error;
+                    this.submitted = true;
+                } catch (err) {
+                    this.errorMsg = 'Transmission failed. Please try again.';
+                    console.error('Adopter submission error:', err);
+                } finally {
+                    this.isSubmitting = false;
+                }
+            }
         }
-      } else {
-        console.log('Kith builder_applications:', payload);
-        this.isSubmitting = false;
-        this.submitted = true;
-      }
-    },
-
-    async submitAdopter() {
-      this.errorMsg = '';
-      var name = document.getElementById('f-adopter-name').value.trim();
-      var contact = document.getElementById('f-adopter-contact').value.trim();
-      var why = document.getElementById('f-adopter-why').value.trim();
-      var source = document.getElementById('f-adopter-source').value.trim();
-
-      if (!name || !contact) {
-        this.errorMsg = 'We need at least your name and a way to reach you.';
-        return;
-      }
-
-      this.isSubmitting = true;
-      var payload = {
-        name: name,
-        contact: contact,
-        why_kith: why || null,
-        heard_from: source || null
-      };
-
-      if (supabaseClient) {
-        try {
-          var result = await supabaseClient.from('early_adopters').insert([payload]);
-          if (result.error) throw result.error;
-          this.isSubmitting = false;
-          this.submitted = true;
-        } catch (err) {
-          console.error('Submission error:', err);
-          this.errorMsg = 'Something went wrong. Try again, or reach out directly.';
-          this.isSubmitting = false;
-        }
-      } else {
-        console.log('Kith early_adopters:', payload);
-        this.isSubmitting = false;
-        this.submitted = true;
-      }
     }
-  };
-}
-
-/* ── Copy to Clipboard ── */
-function copyAddress(elementId, btn) {
-  var text = document.getElementById(elementId).textContent;
-  navigator.clipboard.writeText(text).then(function() {
-    var original = btn.innerHTML;
-    btn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> COPIED';
-    btn.classList.add('border-primary', 'text-primary');
-    setTimeout(function() {
-      btn.innerHTML = original;
-      btn.classList.remove('border-primary', 'text-primary');
-    }, 2000);
-  });
-}
-</script>
+    </script>
 </body></html>
