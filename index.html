@@ -328,7 +328,35 @@
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 <div class="space-y-2">
 <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Timezone</label>
-<input x-model="builder.timezone" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all" placeholder="UTC-5" type="text"/>
+<select x-model="builder.timezone" class="w-full bg-surface-container border border-outline-variant/30 rounded px-4 py-2 focus:border-primary outline-none transition-all">
+<option value="">Select timezone</option>
+<option value="UTC-12">UTC-12 (Baker Island)</option>
+<option value="UTC-11">UTC-11 (Samoa)</option>
+<option value="UTC-10">UTC-10 (Hawaii)</option>
+<option value="UTC-9">UTC-9 (Alaska)</option>
+<option value="UTC-8">UTC-8 (Pacific)</option>
+<option value="UTC-7">UTC-7 (Mountain)</option>
+<option value="UTC-6">UTC-6 (Central)</option>
+<option value="UTC-5">UTC-5 (Eastern)</option>
+<option value="UTC-4">UTC-4 (Atlantic)</option>
+<option value="UTC-3">UTC-3 (Buenos Aires)</option>
+<option value="UTC-2">UTC-2 (Mid-Atlantic)</option>
+<option value="UTC-1">UTC-1 (Azores)</option>
+<option value="UTC+0">UTC+0 (London/Accra)</option>
+<option value="UTC+1">UTC+1 (Berlin/Lagos)</option>
+<option value="UTC+2">UTC+2 (Cairo/Johannesburg)</option>
+<option value="UTC+3">UTC+3 (Moscow/Nairobi)</option>
+<option value="UTC+4">UTC+4 (Dubai)</option>
+<option value="UTC+5">UTC+5 (Karachi)</option>
+<option value="UTC+5:30">UTC+5:30 (Mumbai)</option>
+<option value="UTC+6">UTC+6 (Dhaka)</option>
+<option value="UTC+7">UTC+7 (Bangkok)</option>
+<option value="UTC+8">UTC+8 (Singapore/Beijing)</option>
+<option value="UTC+9">UTC+9 (Tokyo/Seoul)</option>
+<option value="UTC+10">UTC+10 (Sydney)</option>
+<option value="UTC+11">UTC+11 (Solomon Islands)</option>
+<option value="UTC+12">UTC+12 (Auckland)</option>
+</select>
 </div>
 <div class="space-y-2">
 <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest">Availability</label>
